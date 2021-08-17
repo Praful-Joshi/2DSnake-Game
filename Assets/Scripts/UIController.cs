@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -11,28 +12,12 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Time.timeScale = 0f;
-        startMenuPanel.SetActive(true);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        snakeController.ResetState();
     }
 
     public void GameOverPanel()
     {
-        snakeController.ResetState();
-        Time.timeScale = 0f;
         gameOverPanel.SetActive(true);
-    }
-
-    public void StartButton()
-    {
-        snakeController.ResetState();
-        startMenuPanel.SetActive(false);
-        Time.timeScale = 1f;
     }
 
     public void QuitButton()
@@ -47,5 +32,10 @@ public class UIController : MonoBehaviour
         gameOverPanel.SetActive(false);
         snakeController.ResetState();
         Time.timeScale = 1f;
+    }
+
+    public void MainMenuButton()
+    {
+        SceneManager.LoadScene(0);
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class FoodController : MonoBehaviour
 {
     public BoxCollider2D GridArea;
-    public SnakeController snakeController;
 
     void Start()
     {
@@ -28,10 +27,5 @@ public class FoodController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         RandomizePosition();
-
-        if (collision.gameObject.CompareTag("Snake"))
-        {
-            snakeController.score += 7;
-        }
     }
 }
