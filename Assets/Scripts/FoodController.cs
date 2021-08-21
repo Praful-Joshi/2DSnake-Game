@@ -8,10 +8,10 @@ public class FoodController : MonoBehaviour
 
     void Start()
     {
-        RandomizePosition();
+        RandomPositionGenerator();
     }
 
-    private void RandomizePosition()
+    private void RandomPositionGenerator()
     {
         Bounds bounds = this.GridArea.bounds;
 
@@ -26,6 +26,6 @@ public class FoodController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        RandomizePosition();
+        RandomPositionGenerator();
     }
 }

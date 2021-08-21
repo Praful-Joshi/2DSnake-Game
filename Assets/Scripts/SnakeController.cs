@@ -7,9 +7,9 @@ public class SnakeController : MonoBehaviour
 {
     public int score = 0;
     public int initialSize = 4;
-    public bool isShield = false, isScoreBoost = false;
+    public bool isShield = false, isScoreBoost = false, isSpeedBoost = false;
     private bool canDie = true;
-    public bool isOutOfScreen = false;
+    private bool isOutOfScreen = false;
 
     private List<Transform> _segments = new List<Transform>();
     public Transform segmentPrefab;
@@ -20,7 +20,11 @@ public class SnakeController : MonoBehaviour
     void Start()
     {
         ResetState();
-        InvokeRepeating("Move", 0.08f, 0.08f);
+    }
+
+    void FixedUpdate()
+    {
+        Move();
     }
 
     void Update()
@@ -31,6 +35,20 @@ public class SnakeController : MonoBehaviour
         {
             canDie = false;
         }
+        else
+        {
+            canDie = true;
+        }
+
+        if (isSpeedBoost)
+        {
+            Time.fixedDeltaTime = 0.07f;
+        }
+        else
+        {
+            Time.fixedDeltaTime = 0.09f;
+        }
+
     }
 
     void Move()
@@ -47,20 +65,20 @@ public class SnakeController : MonoBehaviour
         this.transform.position = new Vector2(x, y);
 
         //Screen Wrap
-        if (_segments[_segments.Count - 1].position.y > 24.2f)
+        if (_segments[0].position.y > 24.2f)
         {
             this.transform.position = new Vector2(this.transform.position.x, -24.2f);
         }
-        else if (_segments[_segments.Count - 1].position.y < -24.2f)
+        else if (_segments[0].position.y < -24.2f)
         {
             this.transform.position = new Vector2(this.transform.position.x, 24.2f);
         }
 
-        if (_segments[_segments.Count - 1].position.x < -40.1)
+        if (_segments[0].position.x < -40.1)
         {
             this.transform.position = new Vector2(40.1f, this.transform.position.y);
         }
-        else if (_segments[_segments.Count - 1].position.x > 40.1)
+        else if (_segments[0].position.x > 40.1)
         {
             this.transform.position = new Vector2(-40.1f, this.transform.position.y);
         }
@@ -143,6 +161,11 @@ public class SnakeController : MonoBehaviour
             Invoke("ScoreBoostOver", 10.0f);
         }
 
+        else if (other.gameObject.CompareTag("SpeedBooster"))
+        {
+            isSpeedBoost = true;
+            Invoke("SpeedBoostOver", 10.0f);
+        }
 
     }
 
@@ -155,6 +178,11 @@ public class SnakeController : MonoBehaviour
     void ScoreBoostOver()
     {
         isScoreBoost = false;
+    }
+
+    void SpeedBoostOver()
+    {
+        isSpeedBoost = false;
     }
 
     internal void ResetState()

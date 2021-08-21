@@ -347,7 +347,7 @@ MonoBehaviour:
   initialSize: 8
   isShield: 0
   isScoreBoost: 0
-  isOutOfScreen: 0
+  isSpeedBoost: 0
   segmentPrefab: {fileID: 1009964391612614345, guid: df5de32d72860b140921c3cff1789db1, type: 3}
   uIController: {fileID: 2121553990}
 --- !u!1 &147084409
@@ -1306,7 +1306,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 9b337a360b84fa9428fe7dbe7774012f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1924,6 +1924,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 967205008}
   m_CullTransparentMesh: 1
+--- !u!1 &982157002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 982157003}
+  - component: {fileID: 982157004}
+  m_Layer: 0
+  m_Name: PowerUpSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &982157003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982157002}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &982157004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982157002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb8753ba0bfc434797a1d979904c928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUps:
+    amountOfPowerUps: 3
+    typeOfPowerUps:
+    - {fileID: 9088867875981678238, guid: 57f1db66f080a1345ba27f5faad4f80b, type: 3}
+    - {fileID: 7827138123167106405, guid: 7ca6b382bd397c847b7d6b97fcd8b3e3, type: 3}
+    - {fileID: 1724344677065005586, guid: 9a7d6c40f1febb2449d6b0201b5ac311, type: 3}
+    spawnInterval: 30
+  GridArea: {fileID: 1679248742}
 --- !u!1 &998995127
 GameObject:
   m_ObjectHideFlags: 0

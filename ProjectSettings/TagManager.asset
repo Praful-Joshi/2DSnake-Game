@@ -9,6 +9,8 @@ TagManager:
   - Shield
   - Obstacle
   - ScoreBooster
+  - SpeedBooster
+  - SizeReducer
   layers:
   - Default
   - TransparentFX
