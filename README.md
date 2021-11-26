@@ -1,1 +1,1 @@
-# 2DSnake-Game
+# Snake 2D
